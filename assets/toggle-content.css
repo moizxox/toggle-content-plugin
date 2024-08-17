@@ -39,7 +39,7 @@
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
     outline: none;
     transition: background-color 0.3s ease-in-out;
@@ -64,18 +64,21 @@
   .toggle-content-item.active {
     display: block;
   }
-  /* Mobile Styles */
-@media (max-width: 767px) {
+
+  /* ============= Media Query Mobile =========== */
+
+  @media (max-width: 786px) {
   .head-toggle {
       flex-direction: column;
       align-items: flex-start;
+      gap: 10px;
   }
 
   .toggle-button {
-      font-size: 16px;
+      font-size: 12px;
       padding: 10px 15px;
   }
-  .head-toggle-left{
+  .head-toggle-left,.head-toggle-right{
       width: 100%;
       justify-content: center;
       display: flex;
