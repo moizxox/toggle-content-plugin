@@ -9,10 +9,10 @@
 
 defined('ABSPATH') or die('No script kiddies please!');
 
-// Enqueue the plugin's CSS and JS
+// Enqueue the plugin's CSS and JS for the frontend
 function etc_enqueue_assets() {
-    wp_enqueue_style('etc-styles', plugins_url('test.css', __FILE__));
-    wp_enqueue_script('etc-scripts', plugins_url('test.js', __FILE__), array('jquery'), null, true);
+    wp_enqueue_style('etc-styles', plugin_dir_url(__FILE__) . 'assets/toggle-content.css');
+    wp_enqueue_script('etc-scripts', plugin_dir_url(__FILE__) . 'assets/toggle-content.js', array('jquery'), null, true);
 }
 add_action('wp_enqueue_scripts', 'etc_enqueue_assets');
 
@@ -22,3 +22,12 @@ function etc_register_elementor_widget($widgets_manager) {
     $widgets_manager->register(new \Elementor_Toggle_Content_Widget());
 }
 add_action('elementor/widgets/register', 'etc_register_elementor_widget');
+
+// Enqueue CSS and JS for Elementor editor
+add_action('elementor/editor/after_enqueue_scripts', function() {
+    // Enqueue CSS for Elementor editor
+    wp_enqueue_style('toggle-widget-editor-style', plugin_dir_url(__FILE__) . 'assets/toggle-content.css');
+    
+    // Enqueue JS for Elementor editor
+    wp_enqueue_script('toggle-widget-editor-script', plugin_dir_url(__FILE__) . 'assets/toggle-content.js', ['jquery'], false, true);
+});
