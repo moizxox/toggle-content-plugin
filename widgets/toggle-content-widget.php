@@ -280,7 +280,7 @@ class Elementor_Toggle_Content_Widget extends Widget_Base {
         .toggle-content-item.active {
           display: block;
         }
-        
+        g
         </style>
         <div class="toggle-cont">
             <div class="head-toggle">
